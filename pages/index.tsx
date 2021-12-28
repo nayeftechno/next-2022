@@ -6,7 +6,7 @@ const HomePage: NextPage = (): JSX.Element => {
     <RenderHead title='Home' />
     <div className='row'>
       <div className='col-md-12'>
-        <h4>Home</h4>
+        <h4>Home Page</h4>
       </div>
     </div>
   </>);
