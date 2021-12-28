@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import type { NextPage } from 'next';
 import RenderHead from '../components/RenderHead';
 
