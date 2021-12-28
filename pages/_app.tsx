@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) : JSX.Element {
   return (<>
     <Navbar />
     <Layout>
