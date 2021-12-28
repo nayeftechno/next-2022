@@ -1,5 +1,6 @@
 import type {NextPage} from 'next';
 import RenderHead from '../../components/RenderHead';
+import EmployeesList from '../../components/EmployeesList';
 
 const EmployeesPage : NextPage = () : JSX.Element=>{
     return(<>
@@ -7,6 +8,7 @@ const EmployeesPage : NextPage = () : JSX.Element=>{
     <div className='row'>
         <div className='col-md-12'>
             <h4>Employees Page</h4>
+            <EmployeesList/>
         </div>
     </div>
     </>);
