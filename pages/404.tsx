@@ -16,8 +16,8 @@ const NotFoundPage: NextPage = () => {
         <RenderHead title='404' />
         <div className='row'>
             <Flex>
+            <h4>Not Found Page</h4>
                 <div className='col-md-12'>
-                    <h4>Not Found Page</h4>
                     <button onClick={() => push('/')} className='btn btn-success'>Back To Home</button>
                 </div>
             </Flex>

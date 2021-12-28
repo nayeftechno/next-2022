@@ -5,8 +5,8 @@ const AboutPage: NextPage = (): JSX.Element => {
     return (<>
         <RenderHead title='About' />
         <div className='row'>
+        <h4>About Page</h4>
             <div className='col-md-12'>
-                <h4>About Page</h4>
             </div>
         </div>
     </>);

@@ -1,6 +1,7 @@
 {
     "employees" : [
-        {"id" : 100,"name":"ali"},
-        {"id" : 200,"name":"omar"}
+        {"id" : 100,"name":"Ali"},
+        {"id" : 200,"name":"Omar"},
+        {"id" : 300,"name":"Nader"}
     ]
 }
