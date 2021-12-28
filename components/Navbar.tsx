@@ -15,6 +15,11 @@ function Navbar(): JSX.Element {
                         <a className="nav-link">About</a>
                     </Link>
                 </li>
+                <li className='nav-item'>
+                    <Link href={'/employees'}>
+                        <a className="nav-link">Employees</a>
+                    </Link>
+                </li>
             </ul>
         </div>
     </nav>);
