@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { EmployeeClient } from '../packages/web-sdk/src/clients/employee.client';
 
 function EmployeesList(): JSX.Element {
-    const [state, setState] = useState({ loading: false, employees: [] as any });
+    const [state, setState] = useState({ loading: false, employees: [] as any, error: '' });
     useEffect(() => {
         async function getEmployees() {
-            setState({ ...state, loading: true });
-            const response = await axios.get('http://localhost:4000/employees');
-            const { data } = response;
-            setState({ ...state, loading: false, employees: [...data] });
+            setState({ ...state, loading: true, error: '' });
+            EmployeeClient.getEmployees()?.then((response: any) => {
+                setState({ ...state, loading: false, employees: [...response], error: '' });
+            }).catch((error) => {
+                setState({ ...state, loading: false, employees: [], error: error.message });
+            });
         };
         getEmployees();
     }, []);
-    const { loading, employees } = state;
+    const { loading, employees, error } = state;
     return (<>
-        {loading ? (<h4>Loading...</h4>) : (<ul className='list-group'>
+        {loading && !error ? (<h4>Loading...</h4>) : (<ul className='list-group'>
             {
                 employees.map((employee: any) => {
                     const { id, name } = employee;
@@ -22,6 +24,7 @@ function EmployeesList(): JSX.Element {
                 })
             }
         </ul>)}
+        {error ? <h4>{error}</h4> : null}
     </>);
 };
 
