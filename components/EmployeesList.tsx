@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { EmployeeClient } from '../packages/web-sdk/src/clients/employee.client';
+import CompanyStore from '../packages/web-sdk/src/stores/employee-store';
+import EmployeeStore from '../packages/web-sdk/src/stores/employee-store/employee.store';
+const store = new CompanyStore();
 
 function EmployeesList(): JSX.Element {
+
     const [state, setState] = useState({ loading: false, employees: [] as any, error: '' });
     useEffect(() => {
+
+        alert(store.employeeStore.getLoading)
         async function getEmployees() {
             setState({ ...state, loading: true, error: '' });
             EmployeeClient.getEmployees()?.then((response: any) => {

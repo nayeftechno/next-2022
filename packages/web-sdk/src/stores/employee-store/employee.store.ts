@@ -10,8 +10,8 @@ export interface ResponseGenerator {
 
 class EmployeeStore {
 
-    constructor(initialState: InitialState = {}) {
-        this.updateInitialState(initialState);
+    constructor() {
+        //this.updateInitialState(initialState);
     };
 
     @observable
