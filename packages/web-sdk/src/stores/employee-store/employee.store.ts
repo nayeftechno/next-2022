@@ -43,7 +43,7 @@ class EmployeeStore {
         try {
             this.loading = true;
             const response: ResponseGenerator = yield EmployeeClient.getEmployees();
-            this.employees = response;
+            this.employees = response.employees;
             this.loading = false;
             this.error = '';
 

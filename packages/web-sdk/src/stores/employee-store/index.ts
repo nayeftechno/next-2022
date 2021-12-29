@@ -1,9 +1,15 @@
 import EmployeePageStore from "./employee.page.store";
 
-class CompanyStore{
+export type InitialState = Partial<{
     employeePage: EmployeePageStore;
-    constructor(){
-        this.employeePage = new EmployeePageStore();
+}>;
+
+class CompanyStore {
+    
+    employeePage: EmployeePageStore;
+    
+    constructor(initialState: InitialState = {}) {
+        this.employeePage = new EmployeePageStore(initialState.employeePage);
     };
 };
 
