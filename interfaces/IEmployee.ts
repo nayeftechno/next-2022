@@ -1,4 +1,5 @@
 export interface IEmployee{
-    id : number;
+    id ?: number;
     name : string;
+    disabled ?:boolean;
 };

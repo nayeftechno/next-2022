@@ -3,7 +3,8 @@ import type { NextPage } from 'next';
 import { EmployeeClient } from '../../packages/web-sdk/src/clients/employee.client';
 import RenderHead from '../../components/RenderHead';
 import EmployeesList from '../../components/EmployeesList';
-import {EmployeesProps} from '../../types/EmployeesProps';
+import EmployeeForm from '../../components/EmployeeForm';
+import { EmployeesProps } from '../../types/EmployeesProps';
 
 const EmployeesPage: NextPage = (): JSX.Element => {
     const [state, setState] = useState<EmployeesProps>({ employees: [], loading: false, error: '' });
@@ -18,11 +19,23 @@ const EmployeesPage: NextPage = (): JSX.Element => {
         };
         getEmployees();
     }, []);
+    function addEmployee(payload: object,callback : Function) {
+        EmployeeClient.addEmployee(payload)?.then((response: any) => {
+            setState({ ...state, employees: [...state.employees, { ...response }] });
+            callback();
+        }).catch((error) => { });
+    }
     return (<>
         <RenderHead title='Employees' />
         <div className='row'>
             <h4>Employees Page</h4>
-            <div className='col-md-12'>
+            <div className='col-md-4'>
+                <EmployeesList {...state} />
+            </div>
+            <div className='col-md-4'>
+                <EmployeeForm addEmployee={addEmployee} />
+            </div>
+            <div className='col-md-4'>
                 <EmployeesList {...state} />
             </div>
         </div>
