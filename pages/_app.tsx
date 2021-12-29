@@ -10,8 +10,6 @@ interface Props extends AppProps<MiddleWaresValues> {
 }
 
 function MyApp({ Component, pageProps }: Props  ) : JSX.Element {
-  const {store} = pageProps;
-  debugger
   return (<>
     <Navbar />
     <Layout>
