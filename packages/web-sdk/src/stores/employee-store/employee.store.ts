@@ -9,40 +9,40 @@ export interface ResponseGenerator {
 }
 
 class EmployeeStore {
-    
+
     constructor(initialState: InitialState = {}) {
         this.updateInitialState(initialState);
     };
-    
-    @observable 
+
+    @observable
     private employees: any = [];
-    
-    @observable 
+
+    @observable
     private loading = false;
-    
-    @observable 
+
+    @observable
     private error = '';
-    
-    @computed 
+
+    @computed
     get getLoading(): boolean {
         return this.loading;
     };
-    
-    @computed 
+
+    @computed
     get getEmployees(): any[] {
         return this.employees;
     };
-    
-    @computed 
-    get getEror():string{
+
+    @computed
+    get getEror(): string {
         return this.error;
     };
-    
-    @action 
+
+    @action
     public updateInitialState(initialState: InitialState): void {
         mapInitialStateToStoreState(this, initialState);
     };
-    
+
     public * fetch() {
         try {
             this.loading = true;
@@ -57,7 +57,7 @@ class EmployeeStore {
             this.error = JSON.stringify(error);
         }
     }
-    
+
 };
 
 export default EmployeeStore;
