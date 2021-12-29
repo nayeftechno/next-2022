@@ -1,7 +1,7 @@
 import { IEmployee } from '../interfaces/IEmployee';
-import { EmployeesStateProps as EmployeesListProps} from '../pages/employees/index';
+import {EmployeesProps} from '../types/EmployeesProps';
 
-function EmployeesList({ loading, employees, error }: EmployeesListProps): JSX.Element {
+function EmployeesList({ loading, employees, error }: EmployeesProps): JSX.Element {
     return (<>
         {loading && !error ? (<h4>Loading...</h4>) : (<ul className='list-group'>
             {

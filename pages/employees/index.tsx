@@ -3,16 +3,10 @@ import type { NextPage } from 'next';
 import { EmployeeClient } from '../../packages/web-sdk/src/clients/employee.client';
 import RenderHead from '../../components/RenderHead';
 import EmployeesList from '../../components/EmployeesList';
-import { IEmployee } from '../../interfaces/IEmployee';
-
-export type EmployeesStateProps = {
-    employees: IEmployee[];
-    loading: boolean;
-    error: string;
-};
+import {EmployeesProps} from '../../types/EmployeesProps';
 
 const EmployeesPage: NextPage = (): JSX.Element => {
-    const [state, setState] = useState<EmployeesStateProps>({ employees: [], loading: false, error: '' });
+    const [state, setState] = useState<EmployeesProps>({ employees: [], loading: false, error: '' });
     useEffect(() => {
         function getEmployees() {
             setState({ ...state, loading: true });
