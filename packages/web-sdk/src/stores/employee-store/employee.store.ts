@@ -1,8 +1,8 @@
 import { EmployeeClient } from '../../clients/employee.client';
 import { observable, action, computed } from 'mobx';
 import { flow, mapInitialStateToStoreState } from './store.utils';
-import { EmployeeParams } from './Employee.types';
-import { APIErrorHandler } from './store.types';
+//import { EmployeeParams } from './Employee.types';
+//import { APIErrorHandler } from './store.types';
 
 type InitialState = Partial<EmployeeStore>;
 
@@ -10,10 +10,10 @@ export interface ResponseGenerator {
     employees: any,
 }
 
-type FetchParams = {
-    payload: EmployeeParams;
-    errorHandler: APIErrorHandler;
-};
+// type FetchParams = {
+//     payload: EmployeeParams;
+//     errorHandler: APIErrorHandler;
+// };
 
 class EmployeeStore {
 
