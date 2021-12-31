@@ -2,6 +2,7 @@ import type {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import RenderHead from '../../../../components/RenderHead';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const Anchor = styled.a`
 color : blue;
@@ -13,9 +14,9 @@ const ReviewPage:NextPage=():JSX.Element=>{
     return(<>
     <RenderHead title={String(reviewId)}/>
     <div className='row'>
-        <Anchor>
-            <a onClick={()=> push(`/employees/${id}`)}>Back</a>
-        </Anchor>
+        <Link href={`/employees/${id}`}>
+            <a>Back</a>
+        </Link>
         <div className='col-md-12'></div>
     </div>
     </>);

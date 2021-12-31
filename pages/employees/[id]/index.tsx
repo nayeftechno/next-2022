@@ -14,9 +14,9 @@ const EmployeeDetails: NextPage = (): JSX.Element => {
     return (<>
         <RenderHead title={`${id}`} />
         <div className='row'>
-            <Anchor>
-                <a onClick={() => push('/employees')}>Back to employees</a>
-            </Anchor>
+            <Link href={'/employees'}>
+            <a>Back to employees</a>
+            </Link>
             <h4>Employee Details {id}</h4>
             <Link href={`/employees/${id}/reviews/${Number(id)*2}`}>Reviews</Link>
             <div className='col-md-12'></div>
