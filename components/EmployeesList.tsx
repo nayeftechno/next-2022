@@ -9,7 +9,7 @@ function EmployeesList({ loading, employees, error }: EmployeesProps): JSX.Eleme
                 employees.map((employee: IEmployee) => {
                     const { id, name } = employee;
                     return (<li key={id} className='list-group-item'>
-                        <Link href={`/employees/${id}?name=${name}`}>{`${id} ${name}`}</Link>
+                        <Link href={`/employees/${id}`}>{`${id} ${name}`}</Link>
                     </li>);
                 })
             }
