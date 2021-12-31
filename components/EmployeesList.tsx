@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { IEmployee } from '../interfaces/IEmployee';
-import {EmployeesProps} from '../types/EmployeesProps';
+import { EmployeesProps } from '../types/EmployeesProps';
 
 function EmployeesList({ loading, employees, error }: EmployeesProps): JSX.Element {
     return (<>
@@ -7,7 +8,9 @@ function EmployeesList({ loading, employees, error }: EmployeesProps): JSX.Eleme
             {
                 employees.map((employee: IEmployee) => {
                     const { id, name } = employee;
-                    return (<li key={id} className='list-group-item'>{name}</li>);
+                    return (<li key={id} className='list-group-item'>
+                        <Link href={`/employees/${id}`}>{`${id} ${name}`}</Link>
+                    </li>);
                 })
             }
         </ul>)}
