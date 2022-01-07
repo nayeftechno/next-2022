@@ -1,4 +1,5 @@
 import RenderHead from "../../components/RenderHead";
+import Link from "next/link";
 
 export default function PostsPage({ posts }: any): JSX.Element {
     return (<>
@@ -12,6 +13,11 @@ export default function PostsPage({ posts }: any): JSX.Element {
                             return (<li key={id} className="list-group-item">
                                 <p>{title}</p>
                                 <p>{body}</p>
+                                <p>
+                                    <Link href={`/posts/${id}`}>
+                                        <a>details....</a>
+                                    </Link>
+                                </p>
                             </li>);
                         })
                     }
@@ -26,7 +32,7 @@ export async function getStaticProps(ctx: any) {
     const posts = await response.json();
     return {
         props: {
-            posts
+            posts: [...posts].slice(0, 3)
         }
     };
 }
