@@ -1,8 +1,14 @@
 import RenderHead from "../../components/RenderHead";
 import Link from "next/link";
+import {useRouter} from 'next/router';
 
 export default function PostDetailsPage({ post }: any): JSX.Element {
-    const { id, title, body } = post;
+    const {isFallback} = useRouter();
+    if(isFallback){
+        return(<h1>LOADING....</h1>);
+    }
+    if(Object.keys(post).length > 0){
+        const { id, title, body } = post;
     return (<>
         <RenderHead title={`Post Details ${id}`} />
         <div className="row">
@@ -16,6 +22,9 @@ export default function PostDetailsPage({ post }: any): JSX.Element {
             </div>
         </div>
     </>);
+    }else{
+        return(<h1>NO</h1>);
+    }
 };
 export async function getStaticPaths() {
     const paths = [
@@ -25,7 +34,7 @@ export async function getStaticPaths() {
     ];
     return {
         paths,
-        fallback : false
+        fallback : true
     };
 };
 export async function getStaticProps(context: any) {
