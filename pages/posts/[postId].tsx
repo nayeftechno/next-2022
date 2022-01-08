@@ -7,8 +7,7 @@ export default function PostDetailsPage({ post }: any): JSX.Element {
     if(isFallback){
         return(<h1>LOADING....</h1>);
     }
-    if(Object.keys(post).length > 0){
-        const { id, title, body } = post;
+    const {id,title,body} = post;
     return (<>
         <RenderHead title={`Post Details ${id}`} />
         <div className="row">
@@ -22,9 +21,6 @@ export default function PostDetailsPage({ post }: any): JSX.Element {
             </div>
         </div>
     </>);
-    }else{
-        return(<h1>NO</h1>);
-    }
 };
 export async function getStaticPaths() {
     const paths = [
