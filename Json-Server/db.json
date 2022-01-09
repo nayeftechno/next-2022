@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "product1",
+      "title": "product1 🤗",
       "price":100,
       "description" : "description 1"
     }
@@ -10,15 +10,22 @@
     {
       "id": 2,
       "title": "product2",
-      "price":2500,
-      "description" : "description 200"
+      "price":200,
+      "description" : "description 2"
     }
     ,
     {
-      "id": 100,
-      "title": "product100",
-      "price":100000,
-      "description" : "description 100"
+      "id": 3,
+      "title": "product3",
+      "price":300,
+      "description" : "description 3"
+    }
+    ,
+    {
+      "id": 4,
+      "title": "product4 🤢 🤢 🤢 🤢 🤢",
+      "price":400,
+      "description" : "description 4"
     }
   ]
 }
