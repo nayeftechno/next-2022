@@ -35,6 +35,11 @@ function Navbar(): JSX.Element {
                         <a className="nav-link">Posts</a>
                     </Link>
                 </li>
+                <li className='nav-item'>
+                    <Link href={'/products'}>
+                        <a className="nav-link">Products</a>
+                    </Link>
+                </li>
             </ul>
         </div>
     </nav>);

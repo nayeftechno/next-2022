@@ -1,16 +1,24 @@
 {
-  "employees": [
+  "products": [
     {
-      "name": "Sami",
-      "id": 1
-    },
+      "id": 1,
+      "title": "product1",
+      "price":100,
+      "description" : "description 1"
+    }
+    ,
     {
-      "name": "Salim XXXX",
-      "id": 2
-    },
+      "id": 2,
+      "title": "product2",
+      "price":2500,
+      "description" : "description 200"
+    }
+    ,
     {
-      "name": "Loui",
-      "id": 3
+      "id": 100,
+      "title": "product100",
+      "price":100000,
+      "description" : "description 100"
     }
   ]
 }
