@@ -27,5 +27,13 @@
       "price":400,
       "description" : "description 4"
     }
+  ],
+  "news":[
+    {
+      "id" : 1,
+      "title":"title1",
+      "description":"description1",
+      "category": "sport"
+    }
   ]
 }
