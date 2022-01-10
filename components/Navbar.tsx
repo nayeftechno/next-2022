@@ -40,6 +40,16 @@ function Navbar(): JSX.Element {
                         <a className="nav-link">Products</a>
                     </Link>
                 </li>
+                <li className='nav-item'>
+                    <Link href={'/news'}>
+                        <a className="nav-link">News</a>
+                    </Link>
+                </li>
+                <li className='nav-item'>
+                    <Link href={'/company'}>
+                        <a className="nav-link">Company</a>
+                    </Link>
+                </li>
             </ul>
         </div>
     </nav>);
