@@ -11,12 +11,14 @@ type NewsPageState = {
 
 export default function NewsPage({ news }: any): JSX.Element {
     const [state, setState] = useState<NewsPageState>({ title: '', description: '', category: '' });
+    const [News, SetNews] = useState([]);
     const inputRef = useRef(null);
     const { title, description, category } = state;
-    const {replace,asPath,push} = useRouter();
+    const { replace, asPath, push } = useRouter();
     useEffect(() => {
         //@ts-ignore
         inputRef.current.focus();
+        SetNews(news);
     }, [news]);
     const handleChange = (name: string, value: string): void => {
         switch (name) {
@@ -69,20 +71,25 @@ export default function NewsPage({ news }: any): JSX.Element {
             <table>
                 <tr>
                     <td>
-                        <button className="btn btn-success" onClick={()=>push('news/sport')}>Sport</button>
+                        <button className="btn btn-success" onClick={() => push('news/sport')}>Sport</button>
                     </td>
                     <td>
-                        ||
+                        <button className="btn btn-success" onClick={async () => {
+                            const response = await fetch('http://localhost:4000/news?category=sport');
+                            const news = await response.json();
+                            SetNews(news);
+                            push('/news?category=sport', undefined, { shallow: true });
+                        }}>Client Side Filter</button>
                     </td>
                     <td>
-                        <button className="btn btn-success" onClick={()=>push('news/politics')}>Politics</button>
+                        <button className="btn btn-success" onClick={() => push('news/politics')}>Politics</button>
                     </td>
                 </tr>
             </table>
             <div className="col-md-6">
                 <ul className="list-group">
                     {
-                        news.map(({ id, title, description, category }: any) => {
+                        [...News].map(({ id, title, description, category }: any) => {
                             return (<li key={id} className="list-group-item">
                                 <p>{title}</p>
                                 <p>{description}</p>
@@ -115,7 +122,16 @@ export default function NewsPage({ news }: any): JSX.Element {
 };
 
 export async function getServerSideProps(context: any) {
-    const response = await fetch('http://localhost:4000/news');
+    const { query } = context;
+    let url = '';
+    if (query.category) {
+        const { category } = query;
+        url = `http://localhost:4000/news?category=${category}`;
+    }
+    else {
+        url = 'http://localhost:4000/news';
+    }
+    const response = await fetch(url);
     const news = await response.json();
     return {
         props: {
