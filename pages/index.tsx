@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import RenderHead from '../components/RenderHead';
+import RenderHead from '@/components/RenderHead';
 
 const HomePage: NextPage = (): JSX.Element => {
   return (<>
