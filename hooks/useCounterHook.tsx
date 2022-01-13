@@ -1,28 +1,27 @@
 import { useState, useEffect, useMemo } from 'react';
-function makeLocalObservable(target: any) {
-    
-    let listeners: any[] = [];
+type MakeLocalObservableType = {
+    get: () => any;
+    set: (value: any) => void;
+    subscribe: (value: any) => void;
+};
+export function makeLocalObservable<T>(target: T): MakeLocalObservableType {
+    let listeners: T[] = [];
     let value = target;
-
-    function get() {
+    function get() : T {
         return value;
     }
-
-    function set(newValue: any) {
+    function set(newValue: T) : void{
         if (value === newValue) return;
         value = newValue;
-        listeners.forEach((l: any) => l(value));
+        listeners.forEach((l:any) => l(value));
     }
-
-    function subscribe(listenerFunc: any) {
+    function subscribe(listenerFunc: T) {
         listeners.push(listenerFunc);
         return () => unsubscribe(listenerFunc);
     }
-
-    function unsubscribe(listenerFunc: any) {
+    function unsubscribe(listenerFunc:T) {
         listeners = listeners.filter((l: any) => l !== listenerFunc);
     }
-
     return {
         get,
         set,
