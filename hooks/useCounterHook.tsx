@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 function makeLocalObservable(target: any) {
+    
     let listeners: any[] = [];
     let value = target;
 
@@ -29,7 +30,7 @@ function makeLocalObservable(target: any) {
     };
 }
 
-const userStore = makeLocalObservable({ counter: 0 });
+const userStore = makeLocalObservable({ counter: 0, visible: false });
 
 function useCounterHook() {
     const [state, setState] = useState(userStore.get());
@@ -39,6 +40,7 @@ function useCounterHook() {
     const actions = useMemo(() => {
         return {
             increase: () => userStore.set({ ...state, counter: state.counter + 1 }),
+            toggleVisible: (visible: boolean) => userStore.set({ ...state, visible: visible })
         }
     }, [state])
     return [state, actions]
