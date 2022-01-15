@@ -1,7 +1,8 @@
 import {IEmployee} from '@/SimpleStore/IEmployee';
 import { observer } from 'mobx-react-lite';
-function List({ store }: any): JSX.Element {
-    const { getLoading, getEmployees, getAdding, deleteEmployee , setChecked} = store;
+import {useEmployeeStore} from '@/contexts/EmployeeContext';
+function List(): JSX.Element {
+    const { getLoading, getEmployees, getAdding, deleteEmployee ,setChecked} = useEmployeeStore();
     return (<ul className="list-group">
         {
             getLoading && getEmployees.length === 0 ? (<li className="list-group-item">Loading...</li>) : (<>

@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { IEmployee } from '@/SimpleStore/IEmployee';
 import { observer } from 'mobx-react-lite';
-function Form({ store }: any): JSX.Element {
-    const { getAdding, addEmployee } = store;
+import {useEmployeeStore} from '@/contexts/EmployeeContext';
+function Form(): JSX.Element {
+    const { getAdding, addEmployee } = useEmployeeStore();
     const inputRef = useRef(null);
     const [state, setState] = useState<IEmployee>({ name: '', exist: false });
     useEffect(() => {

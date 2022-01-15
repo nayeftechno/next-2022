@@ -3,13 +3,19 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Layout from '@/components/Layout';
 import Navbar from '@/components/Navbar';
+import EmployeeStore from '@/SimpleStore/EmployeeStore';
+import { EmployeeContextProvider } from '@/contexts/EmployeeContext';
 
-function MyApp({ Component, pageProps }: AppProps  ) : JSX.Element {
+const store = new EmployeeStore();
+
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (<>
-    <Navbar />
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <EmployeeContextProvider store={store}>
+      <Navbar />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </EmployeeContextProvider>
   </>);
 }
 

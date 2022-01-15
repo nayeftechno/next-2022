@@ -1,8 +1,7 @@
 import { observer } from 'mobx-react-lite';
-
-function Statics({ store }: any): JSX.Element {
-    const { getTotal, getExists, getNotExists } = store;
-    console.log(getTotal);
+import {useEmployeeStore} from '@/contexts/EmployeeContext';
+function Statics(): JSX.Element {
+    const { getTotal, getExists, getNotExists} = useEmployeeStore();
     return (<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
         <h6>Total : {getTotal}</h6>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

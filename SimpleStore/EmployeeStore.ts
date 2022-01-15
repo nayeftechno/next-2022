@@ -1,52 +1,53 @@
 import { IEmployee } from './IEmployee';
-import { observable, action, computed, makeAutoObservable } from 'mobx';
+import { observable, action, computed, makeObservable } from 'mobx';
+
 class EmployeeStore {
 
-    @observable
-    private employees: IEmployee[];
-    @observable
-    private loading: boolean;
-    @observable
-    private adding: boolean;
+    public employees: IEmployee[] = [];
+    public loading: boolean = false;
+    public adding: boolean = false;
 
     constructor() {
-        makeAutoObservable(this);
-        this.employees = [];
-        this.loading = false;
-        this.adding = false;
+        makeObservable(this, {
+            employees: observable,
+            loading: observable,
+            adding: observable,
+            getEmployees: computed,
+            getLoading: computed,
+            getAdding: computed,
+            getTotal: computed,
+            getExists: computed,
+            getNotExists: computed,
+            addEmployee: action,
+            setChecked: action,
+            deleteEmployee: action
+        });
     };
 
-    @computed
     get getEmployees(): IEmployee[] {
         return this.employees;
     };
 
-    @computed
     get getLoading(): boolean {
         return this.loading;
     };
 
-    @computed
     get getAdding(): boolean {
         return this.adding;
     };
 
-    @computed
-    get getTota(): number {
+    get getTotal(): number {
         return this.employees.length;
     };
 
-    @computed
     get getExists(): number {
         return this.employees.filter((employee: IEmployee) => { return employee.exist === true }).length;
     };
 
-    @computed
     get getNotExists(): number {
         return this.employees.filter((employee: IEmployee) => { return employee.exist === false }).length;
     };
 
-    @action
     addEmployee = (employee: IEmployee): void => {
         this.adding = true;
         fetch('http://localhost:4000/employees', {
@@ -61,7 +62,6 @@ class EmployeeStore {
         });
     };
 
-    @action
     deleteEmployee = (employee: IEmployee): void => {
         fetch(`http://localhost:4000/employees/${employee.id}`, {
             method: 'DELETE'
@@ -70,7 +70,6 @@ class EmployeeStore {
         }).catch((error) => { console.error(error) });
     }
 
-    @action
     setChecked = (employee: IEmployee): void => {
         const currentEmployee = this.employees.find((emp: IEmployee) => { return emp.id === employee.id });
         currentEmployee!.exist = !employee.exist;
@@ -86,7 +85,7 @@ class EmployeeStore {
         }).catch((error) => { console.error(error) });
     };
 
-    public async fetch() {
+    fetch = async () => {
         this.loading = true;
         const response = await fetch('http://localhost:4000/employees');
         const data = await response.json();
@@ -95,4 +94,4 @@ class EmployeeStore {
     }
 
 };
-export default new EmployeeStore();
+export default EmployeeStore;
