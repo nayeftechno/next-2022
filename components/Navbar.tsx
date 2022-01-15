@@ -55,6 +55,11 @@ function Navbar(): JSX.Element {
                         <a className="nav-link">Test</a>
                     </Link>
                 </li>
+                <li className='nav-item'>
+                    <Link href={'/pro'}>
+                        <a className="nav-link">Pro</a>
+                    </Link>
+                </li>
             </ul>
         </div>
     </nav>);
