@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import RenderHead from "@/components/RenderHead";
 import EmployeeStore from "@/SimpleStore/EmployeeStore";
 import List from "@/components/List";
+import Form from '@/components/Form';
 export default function ProPage(): JSX.Element {
     useEffect(() => {
         EmployeeStore.fetch();
@@ -14,7 +15,9 @@ export default function ProPage(): JSX.Element {
             <div className="col-md-4">
                 <List store={EmployeeStore} />
             </div>
-            <div className="col-md-4">Form</div>
+            <div className="col-md-4">
+                <Form store={EmployeeStore}/>
+            </div>
         </div>
     </>);
 };
