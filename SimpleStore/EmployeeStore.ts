@@ -20,7 +20,8 @@ class EmployeeStore {
             getNotExists: computed,
             addEmployee: action,
             setChecked: action,
-            deleteEmployee: action
+            deleteEmployee: action,
+            fetch: action
         });
     };
 
@@ -88,10 +89,10 @@ class EmployeeStore {
     fetch = async () => {
         this.loading = true;
         const response = await fetch('http://localhost:4000/employees');
-        const data = await response.json();
+        const employees = await response.json();
         this.loading = false;
-        this.employees = data;
-    }
+        this.employees = employees;
+    };
 
 };
 export default EmployeeStore;
