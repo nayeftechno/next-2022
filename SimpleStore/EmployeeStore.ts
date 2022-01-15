@@ -31,6 +31,21 @@ class EmployeeStore {
         return this.adding;
     };
 
+    @computed
+    get getTota(): number {
+        return this.employees.length;
+    };
+
+    @computed
+    get getExists(): number {
+        return this.employees.filter((employee: IEmployee) => { return employee.exist === true }).length;
+    };
+
+    @computed
+    get getNotExists(): number {
+        return this.employees.filter((employee: IEmployee) => { return employee.exist === false }).length;
+    };
+
     @action
     addEmployee = (employee: IEmployee): void => {
         this.adding = true;
