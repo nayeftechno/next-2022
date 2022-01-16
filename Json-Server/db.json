@@ -59,24 +59,9 @@
   ],
   "employees": [
     {
-      "name": "look",
-      "exist": true,
+      "name": "Ali",
+      "exist": false,
       "id": 1
-    },
-    {
-      "name": "salim",
-      "exist": false,
-      "id": 2
-    },
-    {
-      "name": "look",
-      "exist": false,
-      "id": 3
-    },
-    {
-      "name": "test",
-      "exist": false,
-      "id": 4
     }
   ]
 }
