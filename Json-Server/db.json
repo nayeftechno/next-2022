@@ -1,67 +1,32 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "title": "product1 🤗",
-      "price": 100,
-      "description": "description 1"
-    },
-    {
-      "id": 2,
-      "title": "product2",
-      "price": 200,
-      "description": "description 2"
-    },
-    {
-      "id": 3,
-      "title": "product3",
-      "price": 300,
-      "description": "description 3"
-    },
-    {
-      "id": 4,
-      "title": "product4 🤢 🤢 🤢 🤢 🤢",
-      "price": 400,
-      "description": "description 4"
-    }
-  ],
-  "news": [
-    {
-      "title": "title1",
-      "description": "description1",
-      "category": "sport",
-      "id": 1
-    },
-    {
-      "title": "title2",
-      "description": "description2",
-      "category": "sport",
-      "id": 2
-    },
-    {
-      "title": "title3",
-      "description": "description3",
-      "category": "politics",
-      "id": 3
-    },
-    {
-      "title": "title4",
-      "description": "description4",
-      "category": "sport",
-      "id": 4
-    },
-    {
-      "title": "xxx",
-      "description": "xxxx",
-      "category": "politics",
-      "id": 5
-    }
-  ],
   "employees": [
     {
       "name": "Ali",
-      "exist": false,
       "id": 1
+    },
+    {
+      "name": "Salim",
+      "id": 2
+    },
+    {
+      "name": "Reem",
+      "id": 3
+    },
+    {
+      "name": "LOUI",
+      "id": 4
+    },
+    {
+      "name": "xxx",
+      "id": 5
+    },
+    {
+      "name": "ffff",
+      "id": 6
+    },
+    {
+      "name": "gggg",
+      "id": 7
     }
   ]
 }
